@@ -1,0 +1,27 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/churn_db;AUTO_SERVER=TRUE;MODE=MySQL;NON_KEYWORDS=VALUE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+  h2:
+    console:
+      enabled: ${H2_CONSOLE_ENABLED:true}
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    show-sql: false
+    open-in-view: true
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:4b678c1825c34e6ab4f4d2c88439d5b4a07d9b9a4c8e765b098b67f1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6}
+    expiration: ${JWT_EXPIRATION:86400000}
+  ml:
+    service:
+      url: ${ML_SERVICE_URL:http://localhost:8000}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000}
